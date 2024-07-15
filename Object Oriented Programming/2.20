@@ -124,21 +124,17 @@ public:
 int findMostExpensiveNationalLibrary(Library **pLibrary, int n) {
     double highest = -1.0;
     int id = -1;
-
     for (int i = 0; i < n; ++i) {
         NationalLibrary *nl = dynamic_cast<NationalLibrary*>(pLibrary[i]);
         if (nl) {
             double currentCost = nl->calculateMembershipCardCost();
             bool operatesOnWeekends = nl->isDaliVikend();
-
-            // Check if current library is more expensive or if it has the same cost but operates on weekends
             if (currentCost > highest || (currentCost == highest && operatesOnWeekends)) {
                 highest = currentCost;
                 id = i;
             }
         }
     }
-
     return id;
 }
 
@@ -220,6 +216,7 @@ int main() {
 
     return 0;
 }
+
 
 //TEST CASES
 
