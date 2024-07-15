@@ -28,12 +28,14 @@ Vo bankata XXXXX moze da se probijat kartickite:
 #include<iostream>
 #include<cstring>
 using namespace std;
+
 class OutOfBoundException{
 public:
     void message(){
         cout<<"Brojot na pin kodovi ne moze da go nadmine dozvolenoto"<<endl;
     }
 };
+
 class Karticka{
 protected:
     char smetka[16];
@@ -51,14 +53,14 @@ public:
     // дополниете ја класата
     virtual ~Karticka(){}
     virtual int tezinaProbivanje(){
-        int pom=pin,counter=0;
-        while(pom){
-            pom/=10;
+        int tmp=pin,counter=0;
+        while(tmp){
+            tmp/=10;
             counter++;
         }
         return counter;
     }
-    friend ostream &operator<<(ostream &out, Karticka &dr);
+    friend ostream &operator<<(ostream& os, Karticka &dr);
     char *getSmetka(){
         return smetka;
     }
@@ -82,7 +84,7 @@ public:
         povekjePin=true;
     }
     ~SpecijalnaKarticka(){delete [] dopolnitelniPinovi;}
-    SpecijalnaKarticka(const SpecijalnaKarticka& dr):Karticka(dr){
+    SpecijalnaKarticka(const SpecijalnaKarticka &dr):Karticka(dr){
         n=dr.n;
         povekjePin=dr.povekjePin;
         dopolnitelniPinovi=new int[n];
@@ -101,13 +103,13 @@ public:
             }
             strcpy(this->smetka,dr.smetka);
             this->pin=dr.pin;
-        } 
+        }
         return *this;
     }
     int tezinaProbivanje(){
         return Karticka::tezinaProbivanje()+n;
     }
-    SpecijalnaKarticka& operator+=(int novPin){
+    SpecijalnaKarticka &operator+=(int novPin){
         if(n>=P) throw OutOfBoundException();
         int *tmp = new int[n+1];
         for(int i=0;i<n;i++){
@@ -163,22 +165,24 @@ public:
     }
     void dodadiDopolnitelenPin(char* smetka, int novPin){
         for(int i=0;i<broj;i++){
-            if( karticki[i]->getDopolnitelenPin() && strcmp(smetka,karticki[i]->getSmetka())==0){
+            if(strcmp(smetka,karticki[i]->getSmetka())==0 && karticki[i]->getDopolnitelenPin()){
                 SpecijalnaKarticka *tmp=dynamic_cast<SpecijalnaKarticka *>(karticki[i]);
                 *tmp+=novPin;
                 karticki[i]=tmp;
             }
         }
     }
-    
-   friend ostream& operator<<(ostream& out, Karticka& dr){
+};
+
+ostream &operator<<(ostream &os, Karticka &dr){
     SpecijalnaKarticka *tmp = dynamic_cast<SpecijalnaKarticka *>(&dr);
     if(tmp){
-        out<<*tmp;
-    } else out<<dr.smetka<<": "<<dr.tezinaProbivanje()<<endl;
-    return out;
-} 
-};
+        os<<*tmp;
+    } else {
+        os<<dr.getSmetka()<<": "<<dr.tezinaProbivanje()<<endl;
+    }
+    return os;
+}
 
 int Banka::LIMIT=7;
 
@@ -220,4 +224,3 @@ int main(){
     komercijalna.pecatiKarticki();
 
 }
-
