@@ -16,37 +16,56 @@ dat.txt:
 
 #include <iostream>
 #include <cstring>
-#include <cctype>
 using namespace std;
-
-int main() {
-    char najdolgRed[101];
-    char trenutenRed[101];
-
-    while (cin.getline(trenutenRed, 100) && strcmp(trenutenRed, "0") != 0) {
-        int najdolzina = 0;
-        int prvaCifra = -1;
-        int poslednaCifra = -1;
-
-        for (int i = 0; i < strlen(trenutenRed); i++) {
-            if (isdigit(trenutenRed[i])) {
-                if (prvaCifra == -1) {
-                    prvaCifra = i;
-                }
-                poslednaCifra = i;
-            }
-        }
-
-        if (prvaCifra != -1 && poslednaCifra != -1 && poslednaCifra - prvaCifra >= 1) {
-            if (poslednaCifra - prvaCifra + 1 > najdolzina) {
-                najdolzina = poslednaCifra - prvaCifra + 1;
-                strncpy(najdolgRed, trenutenRed + prvaCifra, najdolzina);
-                najdolgRed[najdolzina] = '\0';
-            }
+bool daliIma(char a[]){
+    int counter=0;
+    for (int i = 0; i < strlen(a);i++) {
+        if (isdigit(a[i])){
+            counter++;
         }
     }
-
-    cout << najdolgRed;
-
+    if (counter >= 2){
+        return true;
+    } else{
+        return false;
+    }
+}
+int prvBroj(char a[]){
+    for (int i = 0; i < strlen(a);i++) {
+        if (isdigit(a[i])){
+            return i;
+        }
+    }
+    return -1;
+}
+int posledenBroj(char a[]){
+    for (int i = strlen(a)-1; i>=0;i--) {
+        if (isdigit(a[i])){
+            return i;
+        }
+    }
+    return -1;
+}
+int main() {
+    char a[100];
+    char max[100];
+    int m=0;
+    while (cin.getline(a,100) && strcmp(a,"0")!=0){
+        if (daliIma(a)){
+            int n=strlen(a);
+            if (m < n){
+                m=n;
+                strcpy(max, a);
+            }
+            if (n == m){
+                strcpy(max, a);
+            }
+        } else{
+            continue;
+        }
+    }
+    for (int i = prvBroj(max); i <= posledenBroj(max); ++i) {
+        cout << max[i];
+    }
     return 0;
 }
