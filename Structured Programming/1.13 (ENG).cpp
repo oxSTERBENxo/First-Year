@@ -8,8 +8,8 @@ int main() {
     cin >> m >> n;
     bool foundSweetNumber = false;
     int sweetNumber = -1;
-    for (int num = m; num <= n; num++) {
-        int temp = num;
+    for (int i = m; i <= n; i++) {
+        int temp = i;
         bool isSweet = true;
         while (temp > 0) {
             int digit = temp % 10;
@@ -21,8 +21,8 @@ int main() {
         }
         if (isSweet) {
             foundSweetNumber = true;
-            sweetNumber = num;
-            break; 
+            sweetNumber = i;
+            break;
         }
     }
     if (foundSweetNumber) {
