@@ -25,7 +25,7 @@ int main() {
                 numDigits++;
             }
             int mult = 1;
-            for (int i = 0; i < numDigits; ++i) {
+            for (int i = 0; i < numDigits; i++) {
                 mult *= 10;
             }
             firstNum = lastDigit * mult + remainingDigits;
