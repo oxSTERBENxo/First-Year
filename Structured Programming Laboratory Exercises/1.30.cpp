@@ -10,27 +10,23 @@ int main() {
     int a,b,c,d,e;
     cin>>a>>b>>c>>d>>e;
     int poeni = a+b+c+d+e;
-    int grade = 0;
+    int ocena = 0;
     if (poeni >= 91) {
-        grade = 10;
+        ocena = 10;
     } else if (poeni >= 81) {
-        grade = 9;
+        ocena = 9;
     } else if (poeni >= 71) {
-        grade = 8;
+        ocena = 8;
     } else if (poeni >= 61) {
-        grade = 7;
+        ocena = 7;
     } else if (poeni >= 51) {
-        grade = 6;
+        ocena = 6;
     }else{
         cout<<"Predmetot ne e polozen";
         return 0;
     }
-
-    int hasPotentialUpgrade = 0;
-    if (grade < 10 && 100 - poeni <= 1) {
-        hasPotentialUpgrade = 1;
-    }
-    cout << "Ocenka: " << grade << ", poeni: " << poeni << endl;
+    
+    cout << "Ocenka: " << ocena << ", poeni: " << poeni << endl;
     if(poeni==60 || poeni==70 || poeni==80 || poeni==90){
         cout<<"Ima uslov za povisoka ocenka"<<endl;
     }else if(poeni>90){
