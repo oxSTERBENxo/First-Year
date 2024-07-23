@@ -11,13 +11,13 @@ using namespace std;
 int main() {
     int n, k, arr[100];
     cin >> n >> k;
-    for (int i = 0; i < n; ++i) {
+    for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
 
-    for (int i = 0; i < k; ++i) {
+    for (int i = 0; i < k; i++) {
         int minIdx = i;
-        for (int j = i + 1; j < n; ++j) {
+        for (int j = i + 1; j < n; j++) {
             if (arr[j] < arr[minIdx]) {
                 minIdx = j;
             }
@@ -27,7 +27,7 @@ int main() {
         arr[minIdx] = temp;
     }
     cout<<k<<"-te najmali elementi se: ";
-    for (int i = 0; i < k; ++i) {
+    for (int i = 0; i < k; i++) {
         cout << arr[i]<<" ";
     }
     cout << endl;
