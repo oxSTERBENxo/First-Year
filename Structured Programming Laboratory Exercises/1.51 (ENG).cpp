@@ -13,7 +13,7 @@ int main() {
     cin >> num1 >> num2;
     
     int a = num1, b = num2;
-    while (b != 0) {
+    while (b) {
         int temp = b;
         b = a % b;
         a = temp;
