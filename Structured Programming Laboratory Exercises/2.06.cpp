@@ -8,17 +8,17 @@ using namespace std;
 int main() {
     int N, array[100];;
     cin >> N;
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; i++) {
         cin >> array[i];
     }
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; i++) {
         if (array[i] % 2 == 0) {  
             array[i]++;
         } else {  
             array[i]--;
         }
     }
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < N; i++) {
         cout << array[i] << " ";
     }
     return 0;
