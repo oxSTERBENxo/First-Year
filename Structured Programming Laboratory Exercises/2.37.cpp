@@ -30,10 +30,7 @@ int main() {
         cin >> k;
         transform(arr, length, k);
         for (int i = 0; i < length; ++i) {
-            cout << arr[i];
-            if (i < length - 1) {
-                cout << " "; 
-            }
+            cout<<arr[i]<<" ";
         }
         cout << endl;
     }
