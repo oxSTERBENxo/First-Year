@@ -18,10 +18,7 @@ int main() {
         }
     }
     for (int i = 0; i < size; i++) {
-        cout << array[i];
-        if (i < size - 1) {
-            cout << " ";
-        }
+        cout << array[i]<<" ";
     }
     cout << endl;
     return 0;
