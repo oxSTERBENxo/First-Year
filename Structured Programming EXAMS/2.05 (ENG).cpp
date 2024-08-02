@@ -16,7 +16,9 @@ int countConsecutiveOnes(int arr[], int size) {
         if (arr[i] == 1) {
             consecutiveCount++;
             if (consecutiveCount >= 3) {
-                maxConsecutive = max(maxConsecutive, consecutiveCount);
+                if (consecutiveCount > maxConsecutive) {
+                    maxConsecutive = consecutiveCount;
+                }
             }
         } else {
             consecutiveCount = 0;
