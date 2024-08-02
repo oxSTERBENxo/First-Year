@@ -5,10 +5,6 @@ using namespace std;
 int main() {
     int n;
     cin >> n;
-    if (n <= 1) {
-        cout << "Invalid input. n must be greater than 1." << endl;
-        return 0;
-    }
     int maxSumDivisors = 0, numberWithMaxSumDivisors = 1;
     for (int i = 1; i < n; i++) {
         int sumDivisors = 0;
