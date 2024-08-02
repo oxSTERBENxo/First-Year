@@ -35,13 +35,13 @@ int main() {
     cin>>n>>m;
     int a[n][m],b[m];
     int counter=0;
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin>>a[i][j];
         }
     }
-    for (int i = 0; i < m; ++i) {
-        for (int j = 0; j < n; ++j) {
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
             int pro=j;
             if (i<10){
                 pro=pro*10+i;
@@ -60,7 +60,7 @@ int main() {
         b[i]=counter;
         counter=0;
     }
-    for (int i = 0; i < m; ++i) {
+    for (int i = 0; i < m; i++) {
         cout<<b[i]<<endl;
     }
     return 0;
