@@ -9,8 +9,6 @@
 Во сите други случаи, студентот добива оценка "Prosechen rezultat."
 Прикажете го на екран резултатот на студентот (неговата оценка).*/
 
-//1 test case doesn't work, i think it's their mistake.
-
 #include <iostream>
 using namespace std;
 
@@ -27,7 +25,7 @@ int main() {
     
     if (examPoints >= 60 && attendance >= 0.8) {
         cout << "Odlichna ocenka" << endl;
-    } else if (examPoints >= 50 && attendance >= 0.7) {
+    } else if (examPoints >= 50 && attendance >= 0.7) { //if you put >0.7 all test cases pass, but the text clearly says >= so ig it's their mistake.
         cout << "Zadovolitelna ocenka" << endl;
     } else {
         cout << "Prosechen rezultat" << endl;
